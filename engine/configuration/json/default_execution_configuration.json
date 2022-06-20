@@ -1,0 +1,117 @@
+{
+  "preprocessing_pipeline_stages": [
+    {
+      "stage_name": "SplitInWindows",
+      "constructor_kwargs": {
+        "window_size": 1000
+      }
+    }
+  ],
+  "processing_pipeline_stages": [
+    {
+      "stage_name": "FeatureExtractor",
+      "constructor_kwargs": {
+        "features": [
+          "alpha_spectrum_coeffiecients_sum",
+          "beta_spectrum_coeffiecients_sum",
+          "low_gamma_spectrum_coeffiecients_sum",
+          "high_gamma_spectrum_coeffiecients_sum",
+          "delta_spectrum_coeffiecients_sum",
+          "theta_spectrum_coeffiecients_sum",
+          "mean",
+          "standard_deviation"
+        ]
+      }
+    }
+  ],
+  "t_sne_models": [
+    {
+      "model_name": "standard_parameters",
+      "parameters": {
+        "n_jobs": 6,
+        "learning_rate": "auto",
+        "init": "random",
+        "n_components": 2,
+        "early_exaggeration": 12,
+        "perplexity": 30
+      }
+    },
+    {
+      "model_name": "low_perplexity",
+      "parameters": {
+        "n_jobs": 6,
+        "learning_rate": "auto",
+        "init": "random",
+        "n_components": 2,
+        "early_exaggeration": 12,
+        "perplexity": 5
+      }
+    },
+    {
+      "model_name": "low_exageration",
+      "parameters": {
+        "n_jobs": 6,
+        "learning_rate": "auto",
+        "init": "random",
+        "n_components": 2,
+        "early_exaggeration": 1,
+        "perplexity": 30
+      }
+    },
+    {
+      "model_name": "low_perplexity_low_exageration",
+      "parameters": {
+        "n_jobs": 6,
+        "learning_rate": "auto",
+        "init": "random",
+        "n_components": 2,
+        "early_exaggeration": 1,
+        "perplexity": 5
+      }
+    },
+    {
+      "model_name": "high_exageration",
+      "parameters": {
+        "n_jobs": 6,
+        "learning_rate": "auto",
+        "init": "random",
+        "n_components": 2,
+        "early_exaggeration": 300,
+        "perplexity": 30
+      }
+    },
+    {
+      "model_name": "high_perplexity",
+      "parameters": {
+        "n_jobs": 6,
+        "learning_rate": "auto",
+        "init": "random",
+        "n_components": 2,
+        "early_exaggeration": 12,
+        "perplexity": 40
+      }
+    },
+    {
+      "model_name": "high_exageration_high_perplexity",
+      "parameters": {
+        "n_jobs": 6,
+        "learning_rate": "auto",
+        "init": "random",
+        "n_components": 2,
+        "early_exaggeration": 300,
+        "perplexity": 40
+      }
+    },
+    {
+      "model_name": "low_perplexity_high_exageration",
+      "parameters": {
+        "n_jobs": 6,
+        "learning_rate": "auto",
+        "init": "random",
+        "n_components": 2,
+        "early_exaggeration": 300,
+        "perplexity": 5
+      }
+    }
+  ]
+}
