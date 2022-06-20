@@ -9,5 +9,14 @@
 <br>
 <hr>
 
-Please check `ThesisRomanian.pdf` file for information about this project.
+## Thesis
+
+The thesis written in romanian is found [here](./ThesisRomanian.pdf)
+
+<br>
+<hr>
+
+## Presentation
+
+Jupyter notebook presentation is found [here](./Presentation.ipynb)
 
