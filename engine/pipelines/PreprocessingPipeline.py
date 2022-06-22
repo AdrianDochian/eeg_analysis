@@ -20,7 +20,7 @@ class PreprocessingPipeline:
         
         return preprocessing_stages
 
-    def execute(self, time_series_list) -> typing.List[TimeSeries]:
+    def execute(self, time_series_list: typing.List[TimeSeries]) -> typing.List[TimeSeries]:
         for preprocessing_stage in self.preprocessing_stages:
             time_series_list = preprocessing_stage.execute(time_series_list)
         return time_series_list

@@ -1,5 +1,5 @@
-from engine.pipelines.stages.implementations.FeatureExtractor import FeatureExtractor
 from engine.pipelines.stages.StageLoader import StageLoader
+from engine.pipelines.internal.TimeSeries import TimeSeries
 import typing
 import numpy as np
 
@@ -21,7 +21,7 @@ class ProcessingPipeline:
         
         return processing_stages
 
-    def execute(self, time_series_list) -> typing.Tuple[np.array, np.array]:
+    def execute(self, time_series_list: typing.List[TimeSeries]) -> typing.Tuple[np.array, np.array]:
         X = np.array(list(map(lambda time_series: time_series.time_data, time_series_list)))
         X_extra_information = np.array(list( \
             map(lambda time_series: {"sampling_frequency": time_series.sampling_frequency}, time_series_list)\
