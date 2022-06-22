@@ -1,7 +1,7 @@
-from engine.internal.KnowledgeAcquisition import KnowledgeAcquisition
+from engine.pipelines.internal.KnowledgeAcquisition import KnowledgeAcquisition
 from engine.pipelines.PreprocessingPipeline import PreprocessingPipeline
 from engine.pipelines.ProcessingPipeline import ProcessingPipeline
-from engine.internal.TimeSeries import TimeSeries
+from engine.pipelines.internal.TimeSeries import TimeSeries
 from engine.exceptions.InvalidUsageException import InvalidUsageException
 from engine.configuration.ConfigurationLoader import ConfigurationLoader
 from sklearn.manifold import TSNE
@@ -11,7 +11,6 @@ import numpy as np
 import pandas as pd
 import os
 import typing
-
 
 class EEGVisualizer:
     EEG_CHANNELS = ["ECoG F", "ECoG P", "STIM", "EKG"]
@@ -133,6 +132,7 @@ class EEGVisualizer:
 
             combined_df = combined_df.append(t_sne_dataframe)
         
+        sn.set(font_scale=1.35)
         sn.FacetGrid(combined_df, hue="label", col="model_name", col_wrap=4, height=6) \
             .map(plt.scatter, "First dimension", "Second dimension") \
             .add_legend()

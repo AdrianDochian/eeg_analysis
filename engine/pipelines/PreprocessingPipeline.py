@@ -1,5 +1,5 @@
-from engine.internal.TimeSeries import TimeSeries
-from engine.stages.StageLoader import StageLoader
+from engine.pipelines.internal.TimeSeries import TimeSeries
+from engine.pipelines.stages.StageLoader import StageLoader
 import typing
 
 class PreprocessingPipeline:

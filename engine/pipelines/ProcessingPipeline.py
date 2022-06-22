@@ -1,5 +1,5 @@
-from engine.stages.implementations.FeatureExtractor import FeatureExtractor
-from engine.stages.StageLoader import StageLoader
+from engine.pipelines.stages.implementations.FeatureExtractor import FeatureExtractor
+from engine.pipelines.stages.StageLoader import StageLoader
 import typing
 import numpy as np
 
