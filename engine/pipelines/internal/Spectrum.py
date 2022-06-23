@@ -60,12 +60,18 @@ class Spectrum:
         spectrum_x = self.frequencies[0: int(self.spectrum_data_length / 2)]
 
         if from_index != None:
-            from_index *= int(from_index * self.spectrum_data_length / self.sampling_frequency)
-            spectrum_data = spectrum_data[from_index:]
-            spectrum_x = spectrum_x[from_index:]
+            from_index = int(from_index * self.spectrum_data_length / self.sampling_frequency)
         
         if to_index != None:
-            to_index = int((to_index - 1) * self.spectrum_data_length / self.sampling_frequency)
+            to_index = int(to_index * self.spectrum_data_length / self.sampling_frequency)
+        
+        if from_index != None and to_index != None:
+            spectrum_data = spectrum_data[from_index:to_index]
+            spectrum_x = spectrum_x[from_index:to_index]
+        elif from_index != None:
+            spectrum_data = spectrum_data[from_index:]
+            spectrum_x = spectrum_x[from_index:]
+        elif to_index != None:
             spectrum_data = spectrum_data[:to_index]
             spectrum_x = spectrum_x[:to_index]
         
