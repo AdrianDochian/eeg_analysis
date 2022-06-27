@@ -16,15 +16,15 @@ class TimeSeries:
             sampling_frequency = biopac_channel.samples_per_second,
             time_data_length = biopac_channel.point_count,
             time_data = biopac_channel.data,
-            measuring_unit = biopac_channel.units
+            measuring_unit = "miliseconds" # measuring_unit = biopac_channel.units 
         )
 
     def __init_from_data(self, **kwargs) -> None:
         self.name = kwargs["name"]
         self.sampling_frequency = kwargs["sampling_frequency"]
         self.time_data_length = kwargs["time_data_length"]
-        self.time_data = kwargs["time_data"]
-        self.measuring_unit = kwargs["measuring_unit"]
+        self.time_data = kwargs["time_data"]        
+        self.measuring_unit = kwargs["measuring_unit"] 
         
         if "file_name" in kwargs:
             self.file_name = kwargs["file_name"]

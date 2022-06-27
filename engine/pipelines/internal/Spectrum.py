@@ -22,8 +22,9 @@ class Spectrum:
         self.frequencies = np.fft.fftfreq(self.spectrum_data_length, 1 / self.sampling_frequency)
 
     def get_coefficients_mean(self) -> float:
-        filtered_coefficients = np.where(self.spectrum_data > 0)[0]
-        
+        spectrum_absolute_values = abs(self.spectrum_data[0: int(self.spectrum_data_length / 2)])
+        filtered_coefficients = spectrum_absolute_values[np.where(spectrum_absolute_values > 0)[0]]
+
         if len(filtered_coefficients) == 0:
             return 0
         return filtered_coefficients.mean()
@@ -36,10 +37,10 @@ class Spectrum:
         spectrum_frequencies = self.frequencies
 
         # cutting the lower frequencies
-        filtered_spectrum_data = self.spectrum_data * (np.absolute(spectrum_frequencies) > low_cut_off) 
+        filtered_spectrum_data = self.spectrum_data * (np.absolute(spectrum_frequencies) >= low_cut_off) 
         
         # cutting the higher frequencies
-        filtered_spectrum_data = filtered_spectrum_data * (np.absolute(spectrum_frequencies) < high_cut_off)
+        filtered_spectrum_data = filtered_spectrum_data * (np.absolute(spectrum_frequencies) <= high_cut_off)
         
         return self.new_spectrum(filtered_spectrum_data)
 
