@@ -21,23 +21,23 @@ class FeatureExtractor(ProcessingStage):
             new_X.append(np.array(new_row))
         return np.array(new_X), X_extra_information
     
-    def alpha_spectrum_coeffiecients_sum(self, array : np.array, array_extra_information: dict):
-        return self.__get_coeffiecients_sum_for_brain_wave(array, array_extra_information, "alpha")
+    def alpha_spectrum_coeffiecients_mean(self, array : np.array, array_extra_information: dict):
+        return self.__get_coeffiecients_mean_for_brain_wave(array, array_extra_information, "alpha")
 
-    def beta_spectrum_coeffiecients_sum(self, array : np.array, array_extra_information: dict):
-        return self.__get_coeffiecients_sum_for_brain_wave(array, array_extra_information, "beta")
+    def beta_spectrum_coeffiecients_mean(self, array : np.array, array_extra_information: dict):
+        return self.__get_coeffiecients_mean_for_brain_wave(array, array_extra_information, "beta")
     
-    def low_gamma_spectrum_coeffiecients_sum(self, array : np.array, array_extra_information: dict):
-        return self.__get_coeffiecients_sum_for_brain_wave(array, array_extra_information, "low_gamma")
+    def low_gamma_spectrum_coeffiecients_mean(self, array : np.array, array_extra_information: dict):
+        return self.__get_coeffiecients_mean_for_brain_wave(array, array_extra_information, "low_gamma")
     
-    def high_gamma_spectrum_coeffiecients_sum(self, array : np.array, array_extra_information: dict):
-        return self.__get_coeffiecients_sum_for_brain_wave(array, array_extra_information, "high_gamma")
+    def high_gamma_spectrum_coeffiecients_mean(self, array : np.array, array_extra_information: dict):
+        return self.__get_coeffiecients_mean_for_brain_wave(array, array_extra_information, "high_gamma")
     
-    def delta_spectrum_coeffiecients_sum(self, array : np.array, array_extra_information: dict):
-        return self.__get_coeffiecients_sum_for_brain_wave(array, array_extra_information, "delta")
+    def delta_spectrum_coeffiecients_mean(self, array : np.array, array_extra_information: dict):
+        return self.__get_coeffiecients_mean_for_brain_wave(array, array_extra_information, "delta")
     
-    def theta_spectrum_coeffiecients_sum(self, array : np.array, array_extra_information: dict):
-        return self.__get_coeffiecients_sum_for_brain_wave(array, array_extra_information, "theta")
+    def theta_spectrum_coeffiecients_mean(self, array : np.array, array_extra_information: dict):
+        return self.__get_coeffiecients_mean_for_brain_wave(array, array_extra_information, "theta")
 
     def mean(self, array : np.array, _):
         return array.mean()
@@ -45,11 +45,11 @@ class FeatureExtractor(ProcessingStage):
     def standard_deviation(self, array : np.array, _):
         return array.std() 
     
-    def __get_coeffiecients_sum_for_brain_wave(self, array: np.array, array_extra_information: dict, brain_wave: str):
+    def __get_coeffiecients_mean_for_brain_wave(self, array: np.array, array_extra_information: dict, brain_wave: str):
         time_series = self.__get_time_series_from_array(array, array_extra_information)
         return Spectrum(time_series)\
             .band_pass_brain_wave(brain_wave)\
-            .get_coefficients_sum()
+            .get_coefficients_mean()
 
     def __get_time_series_from_array(self, array, array_extra_information):
         return TimeSeries(

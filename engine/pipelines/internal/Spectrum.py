@@ -21,8 +21,12 @@ class Spectrum:
         self.measuring_unit = time_series.measuring_unit
         self.frequencies = np.fft.fftfreq(self.spectrum_data_length, 1 / self.sampling_frequency)
 
-    def get_coefficients_sum(self) -> float:
-        return np.where(self.spectrum_data > 0)[0].sum()
+    def get_coefficients_mean(self) -> float:
+        filtered_coefficients = np.where(self.spectrum_data > 0)[0]
+        
+        if len(filtered_coefficients) == 0:
+            return 0
+        return filtered_coefficients.mean()
 
     def band_pass_brain_wave(self, brain_wave) -> object:
         brain_wave_definition = Spectrum.BRAIN_WAVES_DEFINITIONS[brain_wave]

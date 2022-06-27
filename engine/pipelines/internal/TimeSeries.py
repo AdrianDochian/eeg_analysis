@@ -43,6 +43,19 @@ class TimeSeries:
             file_name = self.file_name
         )
 
+    def describe(self):
+        description = {
+            "measuring_unit": "{}".format(self.measuring_unit),
+            "sampling_frequency": "{:.2f}".format(self.sampling_frequency), 
+            "seconds": "{:.2f}".format(self.time_data_length / self.sampling_frequency), 
+            "mean": "{:.4f}".format(self.time_data.mean()), 
+            "deviation": "{:.4f}".format(self.time_data.std()), 
+            "min": "{:.4f}".format(self.time_data.min()), 
+            "max": "{:.4f}".format(self.time_data.max()), 
+        }
+        print(description)
+        return description
+
     def plot(self):
         time_data_ox_axis = np.linspace(0, self.time_data_length - 1, self.time_data_length)
 
