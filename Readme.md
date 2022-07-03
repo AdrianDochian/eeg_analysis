@@ -19,4 +19,3 @@ The thesis written in romanian is found [here](./ThesisRomanian.pdf)
 ## Presentation
 
 Jupyter notebook presentation is found [here](./Presentation.ipynb)
-

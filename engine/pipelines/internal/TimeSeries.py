@@ -16,7 +16,7 @@ class TimeSeries:
             sampling_frequency = biopac_channel.samples_per_second,
             time_data_length = biopac_channel.point_count,
             time_data = biopac_channel.data,
-            measuring_unit = "miliseconds" # measuring_unit = biopac_channel.units 
+            measuring_unit = biopac_channel.units 
         )
 
     def __init_from_data(self, **kwargs) -> None:
@@ -63,6 +63,6 @@ class TimeSeries:
         plt.plot(time_data_ox_axis, self.time_data,
                 color = 'red',
                 label="({})".format(self.name)); 
-        plt.xlabel("Time(s)")
+        plt.xlabel("Time(ms)")
         plt.ylabel('Amplitude(' + self.measuring_unit + ")")
-        plt.legend()
+        # plt.legend()
